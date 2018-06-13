@@ -1,0 +1,17 @@
+<% @places.each do |place| %>
+<div class="column">
+  <div class="photo"><%= place.photo %></div>
+  <dl>
+    <dt>場所名：</dd>
+    <dd><%= place.name %></dd>
+    <dt>好きな理由：</dd>
+    <dd><%= place.comment %></dd>
+    <dt>Google Map：</dd>
+    <dd><%= place.map %></dd>
+    <dt>更新日時：</dd>
+    <dd><%= place.updated_at %></dd>
+    <dt>作成日時：</dt>
+    <dd><%= place.created_at %></dd>
+  </dl>
+</div>
+<% end %>

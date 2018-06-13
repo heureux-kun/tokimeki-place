@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>トキメキ・プレイス</title>
+    <%= csrf_meta_tags %>
+    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="Wrapper" class="clearfix">
+      <div id="SubContent">
+        <h1 id="Logo">トキメキ・プレイス</h1>
+        <nav id="Places">
+          <ul>
+            <% @places.each do |place| %>
+            <li># <%= link_to place.name, place_path(place) %></li>
+            <% end %>
+          </ul>
+        </nav>
+        <div id="Map">
+          ここに地図を表示
+        </div>
+      </div>
+      <div id="Content" class="clearfix">
+        <div id="Photo">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+  </body>
+</html>

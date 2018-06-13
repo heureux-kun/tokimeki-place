@@ -1,0 +1,22 @@
+<div class="column">
+  <% if @place.photo? %>
+  <div class="photo">
+      <%= image_tag @place.photo.url %>
+  </div>
+  <% end %>
+  <dl>
+    <dt>場所名：</dd>
+    <dd><%= @place.name %></dd>
+    <dt>好きな理由：</dd>
+    <dd><%= @place.comment %></dd>
+    <dt>Google Map：</dd>
+    <dd><%= @place.map %></dd>
+    <dt>更新日時：</dd>
+    <dd><%= @place.updated_at %></dd>
+    <dt>作成日時：</dt>
+    <dd><%= @place.created_at %></dd>
+  </dl>
+</div>
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>

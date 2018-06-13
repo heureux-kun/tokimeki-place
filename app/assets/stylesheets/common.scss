@@ -1,0 +1,242 @@
+@charset "UTF-8";
+/*
+=====================================================================
+*
+*    setting
+*
+* ===================================================================
+*/
+//SP用メディアクエリ
+@mixin forSp{
+	@media only screen and ( max-width:768px ) {
+		@content;
+	}
+}
+
+//PC用メディアクエリ
+@mixin forPc{
+	@media only screen and ( min-width:769px ) {
+		@content;
+	}
+}
+
+//テキストを非表示にする
+@mixin textDisplayNone{
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+}
+
+
+/*
+=====================================================================
+*
+*    Reset
+*
+* =================================================================== 
+*/
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',Osaka,sans-serif;
+	margin:0px;
+	padding:0px;
+	font-size:80%;
+	line-height:1.5;
+	color:#333333;
+}
+html, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video{
+	margin:0px;
+	padding:0px;
+	border:none;
+	font-size: 100%;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { display:block; }
+nav ul { list-style:none; }
+
+blockquote, q { quotes:none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select { vertical-align:middle; }
+
+img			{ border:none; vertical-align:bottom; }
+table		{ font-size:100%; border-collapse:collapse; border-spacing:0; text-align:left; }
+ul,li		{ list-style: none; }
+
+
+
+a				{ color:#25B309; text-decoration: none; }
+a:hover,
+a:focus	{ color:#4FB4E0; }
+
+/*
+=====================================================================
+*
+*    class
+*
+* ===================================================================
+*/
+.alC{text-align: center;}
+.alL{text-align: left;}
+.alR{text-align: right;}
+.flL{float:left;}
+.flR{float:right;}
+
+$i: 10;
+@while $i <= 50 {
+	.mgT#{$i} { margin-top: #{$i}px; }
+	.mgB#{$i} { margin-bottom: #{$i}px; }
+	$i: $i + 10;
+}
+
+.forSp{ display: none; }
+
+@include forSp{
+	.forSp,
+	.forSpBlock{
+		display:block;
+	}
+	.forPc{
+		display: none;
+	}
+}
+
+.fs90{
+	font-size:90%;
+}
+.fs85{
+	font-size:85%;
+}
+.fs80{
+	font-size:80%;
+}
+.fs75{
+	font-size:75%;
+}
+.fs70{
+	font-size:70%;
+}
+
+/*
+=====================================================================
+*
+*    Wrapper
+*
+* =================================================================== 
+*/
+#Wrapper{
+	padding:10px;
+}
+
+/*
+=====================================================================
+*
+*    SubContent
+*
+* =================================================================== 
+*/
+#SubContent{
+	width:200px;
+	float:left;
+	#Logo{
+		margin-bottom: 20px;
+	}
+	#Places{
+		li{
+			margin-bottom: 5px;
+		}
+	}
+	#Map{
+		position: absolute;
+		bottom:20px;
+		width:200px;
+		height:200px;
+	}
+}
+
+
+/*
+=====================================================================
+*
+*    Content
+*
+* =================================================================== 
+*/
+#Content{
+	float:left;
+	margin-left:200px;
+}
+#Photo{
+	width:80%;
+	float:right;
+}
+
+/*
+=====================================================================
+*
+*    span
+*
+* =================================================================== 
+*/
+@include forPc{
+	.title span{
+		height:0px;
+		width:0px;
+		overflow:hidden;
+		position:absolute;
+	}
+}
+
+/*
+=====================================================================
+*
+*    clearfix
+*
+* ===================================================================
+*/
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.clearfix{
+	display:block;
+}
