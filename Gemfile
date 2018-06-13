@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 #image upload
 gem "carrierwave"
+gem "rmagick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

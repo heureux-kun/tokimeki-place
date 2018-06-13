@@ -1,3 +1,4 @@
+<% @place = Place.new unless @place %>
 <%= form_for(@place) do |f| %>
 <% if @place.errors.any? %>
   <div id="error_explanation">
@@ -11,16 +12,25 @@
   </div>
 <% end %>
 
+<dl>
+  <dt><%= f.label :name %></dt>
+  <dd><%= f.text_field :name, class: 'textM' %></dd>
+  <dt><%= f.label :comment %></dt>
+  <dd><%= f.text_area :comment, class: 'textArea'  %></dd>
+  <dt><%= f.label :map %></dt>
+  <dd><%= f.text_field :map, class: 'textL' %></dd>
+</dl>
+
 <!-- 追加箇所 開始 -->
 <div class="field">
   <% if @place.photo? %>
     <div class="thumbnail">
       <%= image_tag @place.photo.url %>
     </div>
-  <% end %><br>
-  <%= f.label :photo %><br>
+  <% end %><br />
+  <%= f.label :photo %><br />
   <%= f.file_field :photo %>
-  <%= f.hidden_field :photo_cache %>
+  <%= f.hidden_field :photo_change %>
 </div>
 <div class="field">
   <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
@@ -33,6 +43,6 @@
 </div>
 <!-- 追加箇所 終了 -->
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit '保存する', data: { confirm: '保存してもよろしいでしょうか？', disable_with: '処理中...' } %>
 </div>
 <% end %>

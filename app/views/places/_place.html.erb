@@ -1,4 +1,4 @@
-<% @places.each do |place| %>
+<% place = @place %>
 <div class="column">
   <% if place.photo? %>
   <div class="photo">
@@ -18,4 +18,3 @@
     <dd><%= place.created_at %></dd>
   </dl>
 </div>
-<% end %>
